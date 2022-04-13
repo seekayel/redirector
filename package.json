@@ -1,0 +1,27 @@
+{
+  "name": "redirector",
+  "version": "1.0.0",
+  "description": "Data based redirector",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seekayel/redirector.git"
+  },
+  "keywords": [],
+  "author": "Kam Lasater <kam.lasater@cyclic.sh>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seekayel/redirector/issues"
+  },
+  "homepage": "https://github.com/seekayel/redirector#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
