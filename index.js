@@ -17,9 +17,9 @@ const app = express()
 // #############################################################################
 // Catch all handler for all other request.
 app.use('*', (req,res) => {
-  res.writeHead('302','Redirect Temporary', {
-    'Location': 'https://discord.gg/huhcqxXCbE'
-  }).end()
+  const url = 'https://discord.gg/huhcqxXCbE'
+  res.set('Location', url)
+  res.status('302').send(`<a href='${url}'>Found</a>.`)
 })
 
 const port = process.env.PORT || 3000
