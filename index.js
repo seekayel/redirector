@@ -17,7 +17,7 @@ const app = express()
 // #############################################################################
 // Catch all handler for all other request.
 app.use('*', (req,res) => {
-  const url = 'https://discord.gg/huhcqxXCbE'
+  const url = process.env.REDIRECT_URL || 'https://discord.gg/huhcqxXCbE'
   res.set('Location', url)
   res.status('302').send(`<a href='${url}'>Found</a>.`)
 })
