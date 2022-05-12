@@ -13,8 +13,16 @@ const app = express()
 //   redirect: false
 // }
 // app.use(express.static('public', options))
-
 // #############################################################################
+
+// Catch all handler for all other request.
+app.use('/support', (req,res) => {
+  const url = 'https://discord.gg/46tfWcw4K5'
+  res.set('Location', url)
+  res.status('302').send(`<a href='${url}'>Found</a>.`)
+})
+
+
 // Catch all handler for all other request.
 app.use('*', (req,res) => {
   const url = process.env.REDIRECT_URL || 'https://discord.gg/huhcqxXCbE'
