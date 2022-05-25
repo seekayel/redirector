@@ -1,6 +1,12 @@
 const express = require('express')
 const app = express()
 const AWS = require("aws-sdk");
+
+
+AWS.config = new AWS.Config({
+  region: process.env.AWS_REGION,
+  signatureVersion: "v4",
+});
 const s3 = new AWS.S3()
 
 // #############################################################################
@@ -20,6 +26,19 @@ const s3 = new AWS.S3()
 // Catch all handler for all other request.
 app.use('/support', (req,res) => {
   const url = 'https://discord.gg/46tfWcw4K5'
+  res.set('Location', url)
+  res.status('302').send(`<a href='${url}'>Found</a>.`)
+})
+
+app.get('/cheers', async (req,res) => {
+  let key = 'cheers.mp4'
+
+  let url = s3.getSignedUrl("getObject", {
+    Key: key,
+    Bucket: process.env.BUCKET,
+    Expires: 900, // default is 900 seconds (15 minutes)
+  });
+
   res.set('Location', url)
   res.status('302').send(`<a href='${url}'>Found</a>.`)
 })
